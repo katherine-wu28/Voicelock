@@ -22,9 +22,7 @@ export const biometrics = {
           executionProviders: ['wasm'],
           graphOptimizationLevel: 'all'
         });
-        console.log("PyAnnote Embedding Model loaded successfully");
       } catch (e) {
-        console.warn("Model not found. Switching to Spectral Simulation Mode.", e);
       } finally {
         modelLoading = null;
       }

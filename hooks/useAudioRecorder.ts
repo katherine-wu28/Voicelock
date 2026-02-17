@@ -45,7 +45,6 @@ export function useAudioRecorder() {
             startTimeRef.current = Date.now();
             setState((prev) => ({ ...prev, isRecording: true, error: null, audioData: null, quality: null }));
         } catch (err) {
-            console.error("Error starting recording:", err);
             setState((prev) => ({ ...prev, error: "Could not access microphone." }));
         }
     }, []);
@@ -98,7 +97,6 @@ export function useAudioRecorder() {
             });
 
         } catch (err) {
-            console.error("Error process audio:", err);
             setState((prev) => ({ ...prev, isRecording: false, isProcessing: false, error: "Failed to process audio." }));
         }
     };

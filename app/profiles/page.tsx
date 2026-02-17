@@ -86,7 +86,6 @@ export default function ProfilesPage() {
                     loadProfiles();
                 }
             } catch (err) {
-                console.error(err);
                 alert("Import failed. Invalid file format.");
             }
         };

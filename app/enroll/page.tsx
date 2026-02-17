@@ -60,7 +60,7 @@ export default function EnrollPage() {
             };
             updateLevel();
         } catch (e) {
-            console.error("Error monitoring audio level", e);
+            // ignore
         }
     }, []);
 
@@ -110,8 +110,8 @@ export default function EnrollPage() {
             const emb = await biometrics.getEmbedding(data);
             setSamples(prev => [...prev, data]);
             setEmbeddings(prev => [...prev, emb]);
-        } catch (err) {
-            console.error(err);
+        } catch {
+            // ignore
         }
     };
 
@@ -127,8 +127,8 @@ export default function EnrollPage() {
                 embeddings: embeddings
             });
             router.push("/profiles");
-        } catch (err) {
-            console.error(err);
+        } catch {
+            // ignore
         } finally {
             setIsSaving(false);
         }

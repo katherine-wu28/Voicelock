@@ -63,7 +63,7 @@ export default function VerifyPage() {
             };
             updateLevel();
         } catch (e) {
-            console.error("Error monitoring audio level", e);
+            // ignore
         }
     }, []);
 
@@ -176,8 +176,7 @@ export default function VerifyPage() {
                 }
             }
 
-        } catch (e) {
-            console.error(e);
+        } catch {
             setResult({
                 score: 0,
                 risk: "HIGH",

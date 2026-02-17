@@ -35,7 +35,6 @@ class SimpleSpeakerEncoder(nn.Module):
         return x
 
 def export_onnx():
-    print("Creating SimpleSpeakerEncoder...")
     model = SimpleSpeakerEncoder()
     model.eval()
 
@@ -44,13 +43,12 @@ def export_onnx():
     dummy_input = torch.randn(1, duration_sec * sample_rate)
 
     output_path = "public/models/speaker_encoder.onnx"
-    
-    print(f"Exporting to {output_path}...")
+
     torch.onnx.export(
-        model, 
-        dummy_input, 
-        output_path, 
-        input_names=["input"], 
+        model,
+        dummy_input,
+        output_path,
+        input_names=["input"],
         output_names=["output"],
         dynamic_axes={
             "input": {0: "batch_size", 1: "sequence_length"},
@@ -58,7 +56,6 @@ def export_onnx():
         },
         opset_version=12
     )
-    print("Done! Valid random-projection ONNX model created.")
 
 if __name__ == "__main__":
     export_onnx()
